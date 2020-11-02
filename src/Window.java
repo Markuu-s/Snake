@@ -3,9 +3,11 @@ import java.awt.*;
 
 class Window extends JWindow{
     private int weight, height;
+    private boolean open;
 
     Window(int weight, int height){
         super();
+        open = true;
         this.weight = weight;
         this.height = height;
 
@@ -16,7 +18,11 @@ class Window extends JWindow{
     }
 
     public boolean open(){
-        
-        return true;
+        return open;
+    }
+
+    public void close(){
+        setVisible(false);
+
     }
 }
