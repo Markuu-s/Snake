@@ -1,5 +1,5 @@
 public class Main {
-    public static void main(String[] argc){
+    public static void main(String[] argc) throws InterruptedException {
         new Init();
         if (!Init.is_true()){
             return;
@@ -8,8 +8,9 @@ public class Main {
         Snake s = new Snake();
 
         while(g.open()){
-            s.run();
+            Thread.sleep(Init.time);
             g.draw(s);
+            s.run();
         }
     }
 }
