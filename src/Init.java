@@ -15,14 +15,19 @@ public class Init {
     public static int weight_size; 
     public static int height_size;
 
-    public static int time = 500;
+    public static int time = 350;
 
     Init(){
-        weight_size = weight_w / size_sqr;
-        height_size = height_w / size_sqr;
+        height_size = weight_w / size_sqr;
+        weight_size = height_w / size_sqr;
     }
 
     public static boolean is_true(){
         return weight_w % size_sqr == 0 && height_w % size_sqr == 0;
     }
+
+    /*
+        HEIGHT - X
+        WEIGHT - Y
+    */
 }

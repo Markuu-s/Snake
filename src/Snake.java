@@ -59,17 +59,17 @@ public class Snake {
             x = 0;
         }
         if (x == -1){
-            x = Init.height_size - 1;
+            x = Init.height_size- 1;
         }
         return x;
     }
 
     private int check_y(int y){
-        if (y == Init.height_size){
+        if (y == Init.weight_size){
             y = 0;
         }
         if (y == -1){
-            y = Init.height_size - 1;
+            y = Init.weight_size - 1;
         }
         return y;
     }
