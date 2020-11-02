@@ -1,12 +1,15 @@
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] argc){
-        Window g = new Window(500, 500);
+        new Init();
+        if (!Init.is_true()){
+            return;
+        }
+        Window g = new Window(Init.weight_w, Init.height_w);
+        Snake s = new Snake();
+
         while(g.open()){
-            Scanner in = new Scanner(System.in);
-            in.nextLine();
-            g.close();
+            s.run();
+            g.draw(s);
         }
     }
 }
