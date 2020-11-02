@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 class Window extends JFrame{
     private int weight, height;
@@ -15,6 +16,7 @@ class Window extends JFrame{
          Init.weight_w, Init.height_w);
         setVisible(true);
         
+        this.addKeyListener((KeyListener)new Key_adapter());
     }
 
     public boolean open(){

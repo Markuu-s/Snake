@@ -11,8 +11,8 @@ public class Snake {
     private int[][] move_by_x;
     private int[][] move_by_y;
 
-    private int move_x;
-    private int move_y;
+    public static int move_x;
+    public static int move_y;
     //if move_x != 0 then move_y == 0 and on the contrary
 
     Snake(){
