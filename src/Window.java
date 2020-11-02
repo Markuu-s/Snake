@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 class Window extends JWindow{
     private int weight, height;
@@ -11,10 +10,11 @@ class Window extends JWindow{
         this.weight = weight;
         this.height = height;
 
-        setLocation(200, 100);
+        setLocation(500, 500);
         setSize(weight, height);
-
         setVisible(true);
+
+        
     }
 
     public boolean open(){
@@ -23,6 +23,6 @@ class Window extends JWindow{
 
     public void close(){
         setVisible(false);
-
+        dispose();
     }
 }
