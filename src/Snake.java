@@ -5,11 +5,12 @@ public class Snake {
     private int x_tail;
     private int y_tail;
     
-    private int size;
+    private int size; //size_max == Init.height_size * Init.weight_size
     private boolean[][] snake;
 
     private int[][] move_by_x;
     private int[][] move_by_y;
+    //to each cell where the snake is located, remember its direction to move the snake
 
     public static int move_x;
     public static int move_y;
@@ -42,7 +43,7 @@ public class Snake {
         x_head = check_x(x_head);
         y_head = check_y(y_head);
 
-        snake[x_head][y_head] = true;
+        snake[x_head][y_head] = true; 
         snake[x_tail][y_tail] = false;
 
         int temp_x_tail = x_tail;
@@ -53,9 +54,12 @@ public class Snake {
         y_tail = check_y(y_tail);
 
     }
+    //1. Move head
+    //2. For graphics(array of snake) draw new head and delete old tail
+    //3. Move tail
 
-    private int check_x(int x){
-        if (x == Init.height_size){
+    private int check_x(int x){ //check field boundaries
+        if (x == Init.height_size){ 
             x = 0;
         }
         if (x == -1){
@@ -64,7 +68,7 @@ public class Snake {
         return x;
     }
 
-    private int check_y(int y){
+    private int check_y(int y){ //check field boundaries
         if (y == Init.weight_size){
             y = 0;
         }
@@ -74,7 +78,7 @@ public class Snake {
         return y;
     }
 
-    public boolean[][] get_field(){
+    public boolean[][] get_field(){//just function for comfort
         return snake;
     }
 }
