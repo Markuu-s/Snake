@@ -1,7 +1,4 @@
-import java.util.Scanner;
-//1. BLock button, which directs in the opposite direction from the movement
 //2. Add more comment
-//3. Make smooth movement
 //4. Add win label
 //5. Add "Play again?"
 public class Main {
@@ -15,8 +12,8 @@ public class Main {
         new Food(s);
 
         while(g.open()){
-            Thread.sleep(Init.time);
             g.draw(s);
+            Thread.sleep(Init.time);
             s.run(g);
         }
     }

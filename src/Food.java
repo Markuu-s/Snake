@@ -1,12 +1,16 @@
 public class Food {
     static int x;
     static int y;
+    static boolean food;
+    //Did the snake eat food
+    static Rectangle image_food;
 
     Food(Snake a){
         random(a);
     }
 
     static void random(Snake a){
+        food = true;
         boolean[][] v = a.get_field();
         int cnt_free = 0;
         for(int i = 0; i < v.length; ++i){

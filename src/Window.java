@@ -35,33 +35,35 @@ class Window extends JFrame{
     }
 
     public void draw(Snake s){
-        getContentPane().removeAll();
-        boolean[][] snake = s.get_field();
-        for(int x = 0; x < Init.height_size; ++x){
-            for(int y = 0; y < Init.weight_size; ++y){
-                if (snake[x][y]){
-                    int[] temp = {x, y};
-                    if (Arrays.equals(s.get_head(), temp)){
-                        getContentPane().add(
-                        new Rectangle(x * Init.size_sqr, y * Init.size_sqr,
-                         Color.DARK_GRAY));    
-                    }
-                    else{
-                        getContentPane().add(
-                            new Rectangle(x * Init.size_sqr, y * Init.size_sqr,
-                            Color.BLACK));
-                    }
-                }
-
-                if (x == Food.x && y == Food.y){
-                    getContentPane().add(
-                        new Rectangle(x * Init.size_sqr, y * Init.size_sqr, 
-                        Color.PINK)
-                    );
-                }
-                setVisible(true);
+        if (Food.food){
+            if (Food.image_food != null){
+                getContentPane().remove(Food.image_food);
             }
+
+            Food.food = false;
+            Food.image_food = new Rectangle(
+                Food.x * Init.size_sqr, 
+                Food.y * Init.size_sqr, 
+                Color.PINK);
+                
+            getContentPane().add(
+                Food.image_food
+            );
+        } else{
+            getContentPane().remove(Snake.snake_image.poll());
         }
+        setVisible(true);
+
+        Snake.snake_image.addLast(new Rectangle(
+            Snake.x_head * Init.size_sqr,
+            Snake.y_head * Init.size_sqr, 
+            Color.BLACK));
+
+        getContentPane().add(
+            Snake.snake_image.getLast()
+        );
+        setVisible(true);
+
     }
 }
 
@@ -79,6 +81,5 @@ class Rectangle extends JComponent{
     public void paint(Graphics g){
         g.setColor(c);
         g.fillRect(weight, height, Init.size_sqr, Init.size_sqr);
-
     }
 }

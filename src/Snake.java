@@ -1,9 +1,14 @@
+import java.util.Deque;
+import java.util.LinkedList;
+
 public class Snake {
-    private int x_head;
-    private int y_head;
+    public static int x_head;
+    public static int y_head;
     
     private int x_tail;
     private int y_tail;
+    
+    public static Deque<Rectangle> snake_image;
     
     public static int size; //size_max == Init.height_size * Init.weight_size
     private boolean[][] snake;
@@ -19,6 +24,7 @@ public class Snake {
     //if move_x != 0 then move_y == 0 and on the contrary
 
     Snake(){
+        snake_image = new LinkedList<Rectangle>();
         x_head = 0;
         y_head = 0;
         x_tail = 0;
@@ -110,7 +116,7 @@ public class Snake {
         return snake;
     }
 
-    int[] get_head(){
+    public int[] get_head(){
         int[] a = new int[2];
         a[0] = x_head;
         a[1] = y_head;
