@@ -61,7 +61,7 @@ public class Snake {
 
         snake[x_head][y_head] = true; 
 
-        if (flag){
+        if (flag){ //If snake hasnot a meal
             snake[x_tail][y_tail] = false;
 
             int temp_x_tail = x_tail;
@@ -70,6 +70,8 @@ public class Snake {
 
             x_tail = check_x(x_tail);
             y_tail = check_y(y_tail);
+        }else{
+            System.out.println("Snake has a meal");
         }
 
     }

@@ -21,10 +21,16 @@ public class Init {
     Init(){
         height_size = weight_w / size_sqr;
         weight_size = height_w / size_sqr;
+
+        height_w += 20;
     }
 
     public static boolean is_true(){
-        return weight_w % size_sqr == 0 && height_w % size_sqr == 0;
+        boolean flag = weight_w % size_sqr == 0 && (height_w - 20) % size_sqr == 0;
+        if (!flag){
+            System.out.println("Incorrect size of window");
+        }
+        return flag;
     }
 
     /*
