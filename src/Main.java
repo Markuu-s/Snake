@@ -4,7 +4,6 @@ import java.util.Scanner;
 //3. Make smooth movement
 //4. Add win label
 //5. Add "Play again?"
-//6. Sometimes lost food for snake
 public class Main {
     public static void main(String[] argc) throws InterruptedException {
         new Init();
@@ -20,8 +19,5 @@ public class Main {
             g.draw(s);
             s.run(g);
         }
-        g.win();
-        Scanner in = new Scanner(System.in);
-        in.next();
     }
 }

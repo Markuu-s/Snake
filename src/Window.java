@@ -52,7 +52,6 @@ class Window extends JFrame{
                             Color.BLACK));
                     }
                 }
-                setVisible(true);
 
                 if (x == Food.x && y == Food.y){
                     getContentPane().add(
@@ -60,6 +59,7 @@ class Window extends JFrame{
                         Color.PINK)
                     );
                 }
+                setVisible(true);
             }
         }
     }
