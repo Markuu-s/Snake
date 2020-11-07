@@ -1,3 +1,9 @@
+import java.util.Scanner;
+//1. BLock button, which directs in the opposite direction from the movement
+//2. Add more comment
+//3. Make smooth movement
+//4. Add win label
+//5. Add "Play again?"
 public class Main {
     public static void main(String[] argc) throws InterruptedException {
         new Init();
@@ -13,6 +19,8 @@ public class Main {
             g.draw(s);
             s.run(g);
         }
-        
+        g.win();
+        Scanner in = new Scanner(System.in);
+        in.next();
     }
 }

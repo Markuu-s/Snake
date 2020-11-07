@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 
 class Window extends JFrame{
     private int weight, height;
@@ -29,15 +30,27 @@ class Window extends JFrame{
         dispose();
     }
 
+    public void win(){
+        getContentPane().removeAll();
+    }
+
     public void draw(Snake s){
         getContentPane().removeAll();
         boolean[][] snake = s.get_field();
         for(int x = 0; x < Init.height_size; ++x){
             for(int y = 0; y < Init.weight_size; ++y){
                 if (snake[x][y]){
-                    getContentPane().add(
+                    int[] temp = {x, y};
+                    if (Arrays.equals(s.get_head(), temp)){
+                        getContentPane().add(
                         new Rectangle(x * Init.size_sqr, y * Init.size_sqr,
-                         Color.BLACK));
+                         Color.DARK_GRAY));    
+                    }
+                    else{
+                        getContentPane().add(
+                            new Rectangle(x * Init.size_sqr, y * Init.size_sqr,
+                            Color.BLACK));
+                    }
                 }
                 setVisible(true);
 

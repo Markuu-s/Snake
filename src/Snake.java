@@ -52,6 +52,10 @@ public class Snake {
         if (x_head == Food.x && y_head == Food.y){
             flag = false;
             ++size;
+            if (size == Init.height_size * Init.weight_size){
+                g.win();
+                return;
+            }
             Food.random(this);
         }
 
@@ -95,5 +99,12 @@ public class Snake {
 
     public boolean[][] get_field(){//just function for comfort
         return snake;
+    }
+
+    int[] get_head(){
+        int[] a = new int[2];
+        a[0] = x_head;
+        a[1] = y_head;
+        return a;
     }
 }

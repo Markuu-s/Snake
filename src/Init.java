@@ -15,8 +15,9 @@ public class Init {
     public static int weight_size; 
     public static int height_size;
 
-    public static int time = 350;
+    public static int time = 150;
 
+    public static int debug = 0;
     Init(){
         height_size = weight_w / size_sqr;
         weight_size = height_w / size_sqr;

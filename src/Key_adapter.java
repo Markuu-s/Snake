@@ -4,7 +4,7 @@ import java.awt.event.KeyEvent;
 public class Key_adapter extends KeyAdapter{
     
     public void keyPressed(KeyEvent event){
-        System.out.println("CLICK!");
+        System.out.println("CLICK!" + Init.debug++);
         switch(event.getKeyCode()){
             case 37:{ // LEFT
                 Snake.move_y = 0;
