@@ -24,6 +24,7 @@ class Window extends JFrame{
     }
 
     public void close(){
+        open = false;
         setVisible(false);
         dispose();
     }
@@ -35,9 +36,17 @@ class Window extends JFrame{
             for(int y = 0; y < Init.weight_size; ++y){
                 if (snake[x][y]){
                     getContentPane().add(
-                        new Rectangle(x * Init.size_sqr, y * Init.size_sqr, Color.BLACK));
+                        new Rectangle(x * Init.size_sqr, y * Init.size_sqr,
+                         Color.BLACK));
                 }
                 setVisible(true);
+
+                if (x == Food.x && y == Food.y){
+                    getContentPane().add(
+                        new Rectangle(x * Init.size_sqr, y * Init.size_sqr, 
+                        Color.PINK)
+                    );
+                }
             }
         }
     }

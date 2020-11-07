@@ -6,11 +6,13 @@ public class Main {
         }
         Window g = new Window(Init.weight_w, Init.height_w);
         Snake s = new Snake();
+        new Food(s);
 
         while(g.open()){
             Thread.sleep(Init.time);
             g.draw(s);
-            s.run();
+            s.run(g);
         }
+        
     }
 }

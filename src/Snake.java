@@ -33,7 +33,7 @@ public class Snake {
         move_y = 0;
     }
 
-    public void run(){
+    public void run(Window g){
         move_by_x[x_head][y_head] = move_x;
         move_by_y[x_head][y_head] = move_y;
         
@@ -43,15 +43,30 @@ public class Snake {
         x_head = check_x(x_head);
         y_head = check_y(y_head);
 
+        if (snake[x_head][y_head]){
+            g.close();
+            return;
+        }
+
+        boolean flag = true;
+        if (x_head == Food.x && y_head == Food.y){
+            flag = false;
+            ++size;
+            Food.random(this);
+        }
+
         snake[x_head][y_head] = true; 
-        snake[x_tail][y_tail] = false;
 
-        int temp_x_tail = x_tail;
-        x_tail = move_by_x[x_tail][y_tail] + x_tail;
-        y_tail = move_by_y[temp_x_tail][y_tail] + y_tail;
+        if (flag){
+            snake[x_tail][y_tail] = false;
 
-        x_tail = check_x(x_tail);
-        y_tail = check_y(y_tail);
+            int temp_x_tail = x_tail;
+            x_tail = move_by_x[x_tail][y_tail] + x_tail;
+            y_tail = move_by_y[temp_x_tail][y_tail] + y_tail;
+
+            x_tail = check_x(x_tail);
+            y_tail = check_y(y_tail);
+        }
 
     }
     //1. Move head
