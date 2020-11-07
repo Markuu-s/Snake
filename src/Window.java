@@ -5,7 +5,7 @@ import java.util.Arrays;
 
 class Window extends JFrame{
     private int weight, height;
-    private boolean open;
+    public boolean open;
 
     Window(int weight, int height){
         super();
@@ -26,11 +26,12 @@ class Window extends JFrame{
 
     public void close(){
         open = false;
-        setVisible(false);
-        dispose();
+        getContentPane().removeAll();
+        setVisible(true);
     }
 
     public void win(){
+        System.out.println("Void win()");
         getContentPane().removeAll();
     }
 
@@ -45,7 +46,7 @@ class Window extends JFrame{
                 Food.x * Init.size_sqr, 
                 Food.y * Init.size_sqr, 
                 Color.PINK);
-                
+
             getContentPane().add(
                 Food.image_food
             );

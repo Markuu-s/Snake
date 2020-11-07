@@ -9,19 +9,24 @@ public class Snake {
     private int y_tail;
     
     public static Deque<Rectangle> snake_image;
+    //this for draw and correct treatment movent of tail
     
     public static int size; //size_max == Init.height_size * Init.weight_size
     private boolean[][] snake;
+    //if true -> on this element the snake
 
     private int[][] move_by_x;
     private int[][] move_by_y;
     //to each cell where the snake is located, remember its direction to move the snake
+    //this is necessary for the snake to move its tail
 
     public static int move_x;
     public static int move_y;
+    //if move_x != 0 then move_y == 0 and on the contrary
+
     public static int pred_move_x;
     public static int pred_move_y;
-    //if move_x != 0 then move_y == 0 and on the contrary
+    //this for draw
 
     Snake(){
         snake_image = new LinkedList<Rectangle>();
@@ -57,22 +62,23 @@ public class Snake {
         y_head = check_y(y_head);
 
         if (snake[x_head][y_head]){
+            System.out.println("You lose :(");
             g.close();
             return;
         }
 
         boolean flag = true;
+        snake[x_head][y_head] = true; 
         if (x_head == Food.x && y_head == Food.y){
             flag = false;
             ++size;
             if (size == Init.height_size * Init.weight_size){
+                //if snake takes all field
                 g.win();
                 return;
             }
             Food.random(this);
         }
-
-        snake[x_head][y_head] = true; 
 
         if (flag){ //If snake hasnot a meal
             snake[x_tail][y_tail] = false;
