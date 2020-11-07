@@ -5,7 +5,7 @@ public class Snake {
     private int x_tail;
     private int y_tail;
     
-    private int size; //size_max == Init.height_size * Init.weight_size
+    public static int size; //size_max == Init.height_size * Init.weight_size
     private boolean[][] snake;
 
     private int[][] move_by_x;
@@ -14,6 +14,8 @@ public class Snake {
 
     public static int move_x;
     public static int move_y;
+    public static int pred_move_x;
+    public static int pred_move_y;
     //if move_x != 0 then move_y == 0 and on the contrary
 
     Snake(){
@@ -31,9 +33,14 @@ public class Snake {
 
         move_x = 1;
         move_y = 0;
+
+        pred_move_x = 0;
+        pred_move_y = 0;
     }
 
     public void run(Window g){
+        pred_move_x = move_x;
+        pred_move_y = move_y;
         move_by_x[x_head][y_head] = move_x;
         move_by_y[x_head][y_head] = move_y;
         
