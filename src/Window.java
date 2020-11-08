@@ -1,4 +1,6 @@
 import javax.swing.*;
+import javax.swing.border.Border;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Arrays;
@@ -10,7 +12,7 @@ class Window extends JFrame{
     private boolean win;
 
     Window(int weight, int height){
-        super();
+        super("Snake");
         open = true;
         this.weight = weight;
         this.height = height;
@@ -41,6 +43,18 @@ class Window extends JFrame{
     public void fail(){
         game = false;
         getContentPane().removeAll();
+        setVisible(true);
+    }
+
+    public void window_win(){
+        JLabel jl = new JLabel("You win!!!");
+        Font font = new Font("Veranda", Font.PLAIN, 64);
+        jl.setVerticalAlignment(JLabel.CENTER);
+        jl.setHorizontalAlignment(JLabel.CENTER);
+        jl.setForeground(Color.BLACK);
+        jl.setFont(font);
+
+        getContentPane().add(jl);
         setVisible(true);
     }
 

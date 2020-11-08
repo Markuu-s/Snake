@@ -1,6 +1,6 @@
+import java.util.Scanner;
+
 //1. Add more comment
-//2. Add win label
-//3. Add "Play again?"
 //4. Когда змея в один ряд/строку и имеет размер строки или ряда она
 // не должна умирать
 public class Main {
@@ -10,7 +10,7 @@ public class Main {
             return;
         }
         Window g = new Window(Init.weight_w, Init.height_w);
-
+        
         while (g.open()){
             g.play_again();
 
@@ -25,7 +25,8 @@ public class Main {
             }
 
             if (g.is_it_win()){
-
+                g.window_win();
+                break;
             } else{
 
             }
