@@ -58,12 +58,12 @@ public class Snake {
         x_head += move_x;
         y_head += move_y;
         
-        x_head = check_x(x_head);
-        y_head = check_y(y_head);
+        x_head = check(x_head, Init.height_size);
+        y_head = check(y_head, Init.weight_size);
 
         if (snake[x_head][y_head]){
             System.out.println("You lose :(");
-            g.close();
+            g.fail();
             return;
         }
 
@@ -87,8 +87,8 @@ public class Snake {
             x_tail = move_by_x[x_tail][y_tail] + x_tail;
             y_tail = move_by_y[temp_x_tail][y_tail] + y_tail;
 
-            x_tail = check_x(x_tail);
-            y_tail = check_y(y_tail);
+            x_tail = check(x_tail, Init.height_size);
+            y_tail = check(y_tail, Init.weight_size);
         }else{
             System.out.println("Snake has a meal");
         }
@@ -98,34 +98,17 @@ public class Snake {
     //2. For graphics(array of snake) draw new head and delete old tail
     //3. Move tail
 
-    private int check_x(int x){ //check field boundaries
-        if (x == Init.height_size){ 
+    private int check(int x, int In_size){ //check field boundaries
+        if (x == In_size){ 
             x = 0;
         }
         if (x == -1){
-            x = Init.height_size- 1;
+            x = In_size - 1;
         }
         return x;
     }
 
-    private int check_y(int y){ //check field boundaries
-        if (y == Init.weight_size){
-            y = 0;
-        }
-        if (y == -1){
-            y = Init.weight_size - 1;
-        }
-        return y;
-    }
-
     public boolean[][] get_field(){//just function for comfort
         return snake;
-    }
-
-    public int[] get_head(){
-        int[] a = new int[2];
-        a[0] = x_head;
-        a[1] = y_head;
-        return a;
     }
 }

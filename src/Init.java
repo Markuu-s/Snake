@@ -1,4 +1,6 @@
-public class Init {
+import java.awt.*;
+
+public class Init{
 
     //size window size
     public static int weight_w = 500; //standart 500
@@ -15,9 +17,15 @@ public class Init {
     public static int weight_size; 
     public static int height_size;
 
+    //time
     public static int time = 150; //standart 150
-
     public static int debug = 0;
+
+    //COLOR
+    public static Color color_head = Color.BLACK;
+    public static Color color_tail = Color.GRAY;
+    public static Color color_food = Color.PINK;
+
     Init(){
         height_size = weight_w / size_sqr;
         weight_size = height_w / size_sqr;

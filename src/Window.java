@@ -5,7 +5,9 @@ import java.util.Arrays;
 
 class Window extends JFrame{
     private int weight, height;
-    public boolean open;
+    private boolean open;
+    private boolean game;
+    private boolean win;
 
     Window(int weight, int height){
         super();
@@ -20,12 +22,24 @@ class Window extends JFrame{
         this.addKeyListener((KeyListener)new Key_adapter());
     }
 
+    public boolean game(){
+        return game;
+    }
+
+    public boolean is_it_win(){
+        return win;
+    }
+
+    public void play_again(){
+        game = true;
+    }
+
     public boolean open(){
         return open;
     }
 
-    public void close(){
-        open = false;
+    public void fail(){
+        game = false;
         getContentPane().removeAll();
         setVisible(true);
     }
@@ -33,9 +47,12 @@ class Window extends JFrame{
     public void win(){
         System.out.println("Void win()");
         getContentPane().removeAll();
+        game = false;
+        win = true;
     }
 
     public void draw(Snake s){
+        //FOOD
         if (Food.food){
             if (Food.image_food != null){
                 getContentPane().remove(Food.image_food);
@@ -45,42 +62,38 @@ class Window extends JFrame{
             Food.image_food = new Rectangle(
                 Food.x * Init.size_sqr, 
                 Food.y * Init.size_sqr, 
-                Color.PINK);
+                Init.color_food);
 
             getContentPane().add(
                 Food.image_food
             );
         } else{
+            //TAIL
             getContentPane().remove(Snake.snake_image.poll());
         }
         setVisible(true);
 
+        if (Snake.snake_image.size() >= 1){
+            Rectangle pred_head = Snake.snake_image.pollLast();
+            getContentPane().remove(pred_head);
+            pred_head.change_color(Init.color_tail);
+            setVisible(true);
+
+            Snake.snake_image.addLast(pred_head);
+            getContentPane().add(Snake.snake_image.getLast());
+            setVisible(true);
+        }
+
+        //HEAD
         Snake.snake_image.addLast(new Rectangle(
             Snake.x_head * Init.size_sqr,
             Snake.y_head * Init.size_sqr, 
-            Color.BLACK));
+            Init.color_head));
 
         getContentPane().add(
             Snake.snake_image.getLast()
         );
         setVisible(true);
 
-    }
-}
-
-class Rectangle extends JComponent{
-    private int weight;
-    private int height;
-    private Color c;
-    
-    Rectangle(int weight, int height, Color c){
-        this.weight = weight;
-        this.height = height;
-        this.c = c;
-    }
-
-    public void paint(Graphics g){
-        g.setColor(c);
-        g.fillRect(weight, height, Init.size_sqr, Init.size_sqr);
     }
 }
